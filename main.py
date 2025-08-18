@@ -130,3 +130,35 @@ def search_contact(contacts):
     else:
         print(
             f"Контакты, соответствующие запросу '{search_term}', не найдены.")
+
+
+def main():
+    contacts = load_contacts()
+
+    while True:
+        print("\nВыберите действие:")
+        print("1. Добавить контакт")
+        print("2. Удалить контакт")
+        print("3. Просмотреть контакты")
+        print("4. Поиск контакта")
+        print("5. Выход")
+
+        choice = input("Введите номер действия: ")
+
+        if choice == '1':
+            add_contact(contacts)
+        elif choice == '2':
+            remove_contact(contacts)
+        elif choice == '3':
+            view_contacts(contacts)
+        elif choice == '4':
+            search_contact(contacts)
+        elif choice == '5':
+            print("Выход из программы.")
+            break
+        else:
+            print("Некорректный выбор, попробуйте снова.")
+
+
+if __name__ == "__main__":
+    main()
