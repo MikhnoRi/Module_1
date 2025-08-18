@@ -43,5 +43,19 @@ def save_contacts(contacts):
 
 
 def is_valid_phone(phone):
-    "Проверяет формат номера телефона (например, 123-456-789-000)."
+    "Проверяет формат номера телефона (например, 123-456-789-000-987)."
     return re.match(r'^\d{3}-\d{3}-\d{3}-\d{3}$', phone)
+
+
+def is_valid_email(email):
+    "Проверяет формат электронной почты."
+    return re.match(r'^[\w\.-]+@[\w\.-]+\.\w{2,}$', email)
+
+
+def input_with_validation(prompt, validation_fn, error_message):
+    "Запрашивает ввод у пользователя с проверкой."
+    while True:
+        value = input(prompt)
+        if validation_fn(value):
+            return value
+        print(error_message)
