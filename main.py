@@ -97,3 +97,18 @@ def remove_contact(contacts):
             return
 
     print(f"Контакт {name} не найден.")
+
+
+def view_contacts(contacts):
+    "Просматривает все контакты."
+    if contacts:
+        print("Список контактов:")
+        for contact in contacts:
+            if isinstance(contact, dict):
+                # Проверяем, что каждый контакт — это словарь
+                print(
+                    f"- {contact.get('name', 'Не указано')} {contact.get('phone', 'Не указано')}, {contact.get('email', 'Не указано')}")
+            else:
+                print("Ошибка: Один из контактов имеет неверную структуру.")
+    else:
+        print("Контакты отсутствуют.")
