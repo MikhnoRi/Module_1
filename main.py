@@ -59,3 +59,27 @@ def input_with_validation(prompt, validation_fn, error_message):
         if validation_fn(value):
             return value
         print(error_message)
+
+
+def add_contact(contacts):
+    "Добавляет новый контакт с проверкой валидности данных."
+    name = input("Введите имя: ").strip()
+    phone = input_with_validation(
+        "Введите номер телефона (например, 123-456-789-000): ", is_valid_phone, "Некорректный формат телефона.")
+    email = input_with_validation(
+        "Введите электронную почту: ", is_valid_email, "Некорректный формат электронной почты.")
+
+    # Проверка на дублирование контакта
+    if any(contact['name'] == name for contact in contacts):
+        print("Контакт с таким именем уже существует.")
+        return
+
+    contact = {
+        "name": name,
+        "phone": phone,
+        "email": email
+    }
+
+    contacts.append(contact)
+    save_contacts(contacts)
+    print("Контакт успешно добавлен.")
