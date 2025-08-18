@@ -112,3 +112,21 @@ def view_contacts(contacts):
                 print("Ошибка: Один из контактов имеет неверную структуру.")
     else:
         print("Контакты отсутствуют.")
+
+
+def search_contact(contacts):
+    "Поиск контактов по имени номер телефона."
+    search_term = input(
+        "Введите имя или номер телефона для поиска: ").strip().lower()
+
+    results = [contact for contact in contacts if search_term in contact['name'].lower(
+    ) or search_term in contact['phone'].lower()]
+
+    if results:
+        print("Найденные контакты:")
+        for contact in results:
+            print(
+                f"- {contact['name']} {contact['phone']}, {contact['email']}")
+    else:
+        print(
+            f"Контакты, соответствующие запросу '{search_term}', не найдены.")
