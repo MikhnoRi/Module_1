@@ -1,5 +1,3 @@
-"C:\Desktop\Python\Module_1\img\depositphotos_8138619-stock-photo-old-style-phone-over-yellow.jpg"
-
 Консольное приложение для управления контактами.Каждый контакт содержит имя, телефон, email. Контакты хранятся в файле contacts.txt.
 
 Функции программы:
