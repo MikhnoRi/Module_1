@@ -1,4 +1,4 @@
-![depositphotos_8138619-stock-photo-old-style-phone-over-yellow](https://github.com/user-attachments/assets/5d82b06c-75a9-47d5-b20e-f6b48dcd4ce4)
+                                   ![depositphotos_8138619-stock-photo-old-style-phone-over-yellow](https://github.com/user-attachments/assets/5d82b06c-75a9-47d5-b20e-f6b48dcd4ce4)
 
 Консольное приложение для управления контактами.Каждый контакт содержит имя, телефон, email. Контакты хранятся в файле contacts.txt.
 
