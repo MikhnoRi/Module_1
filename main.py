@@ -83,3 +83,17 @@ def add_contact(contacts):
     contacts.append(contact)
     save_contacts(contacts)
     print("Контакт успешно добавлен.")
+
+
+def remove_contact(contacts):
+    "Удаляет контакт по имени."
+    name = input("Введите имя для удаления: ").strip()
+
+    for contact in contacts:
+        if contact['name'] == name:
+            contacts.remove(contact)
+            save_contacts(contacts)
+            print(f"Контакт {name} удален.")
+            return
+
+    print(f"Контакт {name} не найден.")
