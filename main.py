@@ -1,15 +1,8 @@
-import txt
-import os
 import re
-import sys
+import os
+import json
 
 CONTACTS_FILE = 'contacts.txt'
-
-current_path = sys.path
-print(current_path)
-
-file_path = txt
-sys.path.append(file_path)
 
 
 def load_contacts():
@@ -17,7 +10,7 @@ def load_contacts():
     if os.path.exists(CONTACTS_FILE):
         with open(CONTACTS_FILE, 'r', encoding='utf-8') as file:
             try:
-                contacts = txt.load(file)
+                contacts = json.load(file)
                 if isinstance(contacts, list):
                     # Проверяем, что каждый элемент списка — это словарь
                     if all(isinstance(contact, dict) for contact in contacts):
@@ -29,7 +22,7 @@ def load_contacts():
                     print(
                         "Ошибка: Ожидался список контактов, но найден другой тип данных.")
                     return []
-            except txt.txtecodeError:
+            except json.JSONDecodeError:
                 print(
                     "Ошибка: Невозможно прочитать txt файл. Возможно, файл поврежден.")
                 return []
@@ -39,7 +32,7 @@ def load_contacts():
 def save_contacts(contacts):
     "Сохраняет контакты в файл txt."
     with open(CONTACTS_FILE, 'w', encoding='utf-8') as file:
-        txt.dump(contacts, file, indent=4, ensure_ascii=False)
+        json.dump(contacts, file, indent=4, ensure_ascii=False)
 
 
 def is_valid_phone(phone):
@@ -72,7 +65,6 @@ def add_contact(contacts):
     # Проверка на дублирование контакта
     if any(contact['name'] == name for contact in contacts):
         print("Контакт с таким именем уже существует.")
-        return
 
     contact = {
         "name": name,
@@ -94,9 +86,9 @@ def remove_contact(contacts):
             contacts.remove(contact)
             save_contacts(contacts)
             print(f"Контакт {name} удален.")
-            return
 
     print(f"Контакт {name} не найден.")
+    return
 
 
 def view_contacts(contacts):
